@@ -31,6 +31,4 @@ internal abstract class KtorApi {
             parameter("api_key", API_KEY)
         }
     }
-
-
 }
