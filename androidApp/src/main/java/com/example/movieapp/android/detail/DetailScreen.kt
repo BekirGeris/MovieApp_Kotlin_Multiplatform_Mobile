@@ -80,7 +80,7 @@ fun DetailScreen(
                     Spacer(modifier = modifier.height(16.dp))
                     Text(text = "Released in ${movie.releaseDate}".uppercase(), color = Color.White, style = MaterialTheme.typography.overline)
                     Spacer(modifier = modifier.height(4.dp))
-                    Text(text = movie.description, color = Color.White, style = MaterialTheme.typography.body2)
+                    Text(text = movie.description, color = Color.White, style = MaterialTheme.typography.body1)
                 }
             }
         }
