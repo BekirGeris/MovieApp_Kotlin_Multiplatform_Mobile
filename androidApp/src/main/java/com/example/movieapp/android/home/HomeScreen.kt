@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
@@ -20,7 +19,6 @@ import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -61,10 +59,8 @@ fun HomeScreen(
                     movie = movie,
                     onMovieClick = { navigateToDetail(movie) })
 
-                if (index >= uiState.movies.size && !uiState.loading && !uiState.loadFinished) {
-                    LaunchedEffect(key1 = Unit) {
-
-                    }
+                if (index >= uiState.movies.size - 1 && !uiState.loading && uiState.loadFinished) {
+                    loadNextMovies(false)
                 }
             }
 

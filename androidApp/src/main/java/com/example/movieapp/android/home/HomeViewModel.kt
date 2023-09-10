@@ -1,6 +1,5 @@
 package com.example.movieapp.android.home
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -20,7 +19,6 @@ class HomeViewModel(
     }
 
     fun loadMovies(forceReload: Boolean = false) {
-        Log.d("bekbek", "loadMovies")
         if (uiState.loading) return
 
         if (forceReload) {
@@ -34,7 +32,6 @@ class HomeViewModel(
         viewModelScope.launch {
             uiState = uiState.copy(loading = true)
             try {
-                Log.d("bekbek", "loadMovies 1")
                 val resultMovies = getMoviesUseCase(page = currentPage)
 
                 val movies = if (currentPage == 1) resultMovies else uiState.movies + resultMovies
@@ -47,9 +44,7 @@ class HomeViewModel(
                     loadFinished = resultMovies.isNotEmpty(),
                     movies = movies
                 )
-                Log.d("bekbek", "loadMovies 2 $movies")
             } catch (e: Exception) {
-                Log.d("bekbek", "loadMovies e: ${e.localizedMessage}")
                 uiState = uiState.copy(
                     loading = false,
                     refreshing = false,
